@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  split_bill:
+    build: .
+    volumes:
+      - "../:/work/"
+    tty: true
+    stdin_open: true
