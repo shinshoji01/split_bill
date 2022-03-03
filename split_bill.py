@@ -21,8 +21,9 @@ def main():
     print(data)
     
     split_type = list(set(data["分割タイプ"].values))
-    print(data)
     split_type.sort()
+    print("")
+    print(split_type)
     
     all_members = member_list.values[0]
     print("------------------------------------------------------")
@@ -32,7 +33,8 @@ def main():
     
     members = {}
     for i in range(len(split_type)):
-        members[split_type[i]] = member_list.values[2+i][member_list.values[2+i]!=0]
+        l = member_list.values[member_list.index==split_type[i]][0]
+        members[split_type[i]] = l[l!=0]
     leader = member_list.values[1][0]
     
     print("------------------------------------------------------")
