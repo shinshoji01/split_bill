@@ -14,11 +14,14 @@ def main():
     print("all data:")
     print("------------------------------------------------------")
     data = pd.read_excel(args.path, sheet_name=1, engine="openpyxl")
+    data = data[np.array(1-data.iloc[:,0].isna(),dtype=np.bool)]
     member_list = pd.read_excel(args.path, index_col=0, header=None, engine="openpyxl")
+    member_list = member_list.loc[:, np.array(1-member_list.iloc[0, :].isna(), dtype=np.bool)]
     member_list[member_list.isnull()]=0
     print(data)
     
     split_type = list(set(data["分割タイプ"].values))
+    print(data)
     split_type.sort()
     
     all_members = member_list.values[0]
